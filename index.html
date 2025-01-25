@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neon Checkers Game</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">&#9790;</button>
+  <div class="container">
+    <!-- Homepage -->
+    <div id="homepage">
+      <h1>Welcome to Neon Checkers</h1>
+      <form id="userForm">
+        <label for="name">Enter Your Name:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Start Game</button>
+      </form>
+    </div>
+
+    <!-- Overview -->
+    <div id="overview" class="hidden">
+      <h1>Hello, <span id="userName"></span>!</h1>
+      <p>Welcome to Neon Checkers! This is a modern take on the classic game. Enjoy stunning visuals and challenging gameplay. You can play against the AI or a friend. Let's get started!</p>
+      <button id="proceedBtn">Proceed to Game</button>
+      <button id="backToHome">Back to Home</button>
+    </div>
+
+    <!-- Mode Selection -->
+    <div id="modeSelection" class="hidden">
+      <h1>Choose Game Mode</h1>
+      <button id="playWithAI">Play with AI</button>
+      <button id="playMultiplayer">Play Multiplayer</button>
+      <button id="backToOverview">Back to Overview</button>
+    </div>
+
+    <!-- Multiplayer Player Names -->
+    <div id="multiplayerNames" class="hidden">
+      <h1>Enter Player Names</h1>
+      <form id="multiplayerForm">
+        <label for="player1">Player 1 Name:</label>
+        <input type="text" id="player1" name="player1" required>
+        <label for="player2">Player 2 Name:</label>
+        <input type="text" id="player2" name="player2" required>
+        <button type="submit">Start Game</button>
+        <button id="backToModeSelection">Back to Mode Selection</button>
+      </form>
+    </div>
+
+    <!-- Game -->
+    <div id="game" class="hidden">
+      <h1>Neon Checkers</h1>
+      <div id="scoreboard">
+        <p id="player1Score">Player 1 (You): 0</p>
+        <p id="player2Score">Player 2 (AI): 0</p>
+      </div>
+      <div id="board"></div>
+      <p id="turnIndicator"></p>
+      <button id="resetGame">Reset Game</button>
+      <button id="backToModeSelectionFromGame">Back to Mode Selection</button>
+    </div>
+
+    <!-- Win/Lose/Draw Message -->
+    <div id="winLoseMessage" class="hidden">
+      <h1 id="message"></h1>
+      <button id="playAgain">Play Again</button>
+      <button id="backToModeSelectionFromWin">Back to Mode Selection</button>
+    </div>
+  </div>
+  <script src="script.js"></script> <!-- Link to external JavaScript -->
+</body>
+</html>
