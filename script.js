@@ -105,7 +105,12 @@ function handlePieceClick(row, col) {
     // If there are capture moves available, enforce capture selection
     const mandatoryCaptures = getMandatoryCaptures();
     if (mandatoryCaptures.length > 0 && !isCaptureMove(row, col, mandatoryCaptures)) {
-      alert("You must capture an opponent's piece!");
+      // Show the capture message
+      const captureMessage = document.getElementById('captureMessage');
+      captureMessage.classList.remove('hidden');
+      setTimeout(() => {
+        captureMessage.classList.add('hidden');
+      }, 2000); // Hide the message after 2 seconds
       return;
     }
 
@@ -402,6 +407,28 @@ function isValidMove(fromRow, fromCol, toRow, toCol, piece, isCapture = false) {
       const midCol = fromCol + colDiff / 2;
       const midPiece = boardState[midRow][midCol];
       return midPiece && midPiece.player !== piece.player;
+    }
+
+    // Handle multiple-row captures for kings
+    if (piece.king && Math.abs(rowDiff) > 2 && Math.abs(colDiff) > 2) {
+      let currentRow = fromRow + (rowDiff > 0 ? 1 : -1);
+      let currentCol = fromCol + (colDiff > 0 ? 1 : -1);
+      let hasOpponentPiece = false;
+
+      while (currentRow !== toRow && currentCol !== toCol) {
+        const currentPiece = boardState[currentRow][currentCol];
+        if (currentPiece) {
+          if (currentPiece.player !== piece.player) {
+            hasOpponentPiece = true;
+          } else {
+            return false; // Cannot jump over own piece
+          }
+        }
+        currentRow += (rowDiff > 0 ? 1 : -1);
+        currentCol += (colDiff > 0 ? 1 : -1);
+      }
+
+      return hasOpponentPiece;
     }
   }
 
