@@ -39,15 +39,3 @@ Welcome to **Neon Checkers**, a modern and visually stunning take on the classic
 4. **Winning**:
    - The player who captures all the opponent's pieces or blocks them wins the game.
 
----
-
-## Setup Instructions
-
-### Prerequisites
-- A modern web browser (e.g., Chrome, Firefox, Edge).
-
-### Steps to Run the Game
-1. **Download the Project**:
-   - Clone this repository or download the ZIP file.
-   ```bash
-   git clone https://github.com/your-username/neon-checkers.git
